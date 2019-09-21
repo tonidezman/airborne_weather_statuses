@@ -18,5 +18,13 @@
 require 'rails_helper'
 
 RSpec.describe Flight, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it "checks validations" do
+    flight = build(:flight)
+    expect(flight).to be_valid
+
+    # tonko
+    # create all validations that you thing that we should have for valid data for the flight
+  end
+
 end

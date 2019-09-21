@@ -11,7 +11,7 @@ FactoryBot.define do
   factory :flight do
     city 'Ljubljana'
     note 'Pojdimo na Ljubljanski grad'
-    temperature 25.6
+    temperature 25
     airborne_at 1.hour.ago
   end
 end
