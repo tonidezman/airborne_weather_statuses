@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 2019_09_21_160418) do
   enable_extension "plpgsql"
 
   create_table "flights", force: :cascade do |t|
-    t.string "city"
     t.string "note"
-    t.string "temperature"
-    t.string "airborne_at"
+    t.string "city", null: false
+    t.integer "temperature"
+    t.datetime "airborne_at", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["city", "airborne_at"], name: "index_flights_on_city_and_airborne_at", unique: true
