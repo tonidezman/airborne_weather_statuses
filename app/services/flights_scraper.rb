@@ -20,7 +20,7 @@ class FlightsScraper
       destination   = flight_row.css('.fdabf-td2').text
       status        = flight_row.css('.fdabf-td7').text
 
-      next if status != AIRBORNE
+      next if status != 'airborne'
       unless Flight.create(
         airborne_at: DateTime.parse("#{current_date} #{time}"),
         destination: destination

@@ -11,7 +11,7 @@ class WeatherService
       },
     )
     body = JSON.parse(conn.get.body)
-    body.dig("main", "temp").round
+    body.dig("main", "temp")&.round
   end
 
 end
