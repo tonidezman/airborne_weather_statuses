@@ -17,12 +17,13 @@ ActiveRecord::Schema.define(version: 2019_09_21_160418) do
 
   create_table "flights", force: :cascade do |t|
     t.string "note"
-    t.string "city", null: false
+    t.string "city"
     t.integer "temperature"
+    t.string "destination", null: false
     t.datetime "airborne_at", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["city", "airborne_at"], name: "index_flights_on_city_and_airborne_at", unique: true
+    t.index ["destination", "airborne_at"], name: "index_flights_on_destination_and_airborne_at", unique: true
   end
 
 end
