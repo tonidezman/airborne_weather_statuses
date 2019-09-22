@@ -12,6 +12,10 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'faraday'
 
+gem 'nokogiri'
+gem 'selenium-webdriver'
+gem 'capybara'
+
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do

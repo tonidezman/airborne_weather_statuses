@@ -19,7 +19,6 @@
 require 'rails_helper'
 
 RSpec.describe Flight, type: :model do
-
   it "checks validations" do
     flight = build(:flight)
     expect(flight).to be_valid
