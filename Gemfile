@@ -15,7 +15,9 @@ gem 'faraday'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
+  gem 'vcr'
   gem 'faker'
+  gem 'webmock'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
   gem 'factory_bot_rails'
