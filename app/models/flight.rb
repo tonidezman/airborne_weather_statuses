@@ -18,6 +18,7 @@
 
 class Flight < ApplicationRecord
   before_save :generate_city
+  before_save :get_temperature
 
   def note=(note_str="")
     if note_str.blank?
@@ -30,6 +31,10 @@ class Flight < ApplicationRecord
 
   def generate_city
     self.city = destination.split.first.capitalize
+  end
+
+  def get_temperature
+    self.temperature = WeatherService.temperature(city: city)
   end
 
 end
