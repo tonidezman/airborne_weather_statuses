@@ -22,9 +22,6 @@ RSpec.describe Flight, type: :model do
   it "checks validations" do
     flight = build(:flight)
     expect(flight).to be_valid
-
-    # tonko
-    # create all validations that you thing that we should have for valid data for the flight
   end
 
 end
