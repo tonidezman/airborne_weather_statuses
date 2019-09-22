@@ -27,14 +27,15 @@ class Flight < ApplicationRecord
     write_attribute(:note, note_str)
   end
 
+  def get_temperature
+    self.temperature = WeatherService.temperature(city: city)
+  end
+
   private
 
   def generate_city
     self.city = destination.split.first.capitalize
   end
 
-  def get_temperature
-    self.temperature = WeatherService.temperature(city: city)
-  end
 
 end

@@ -26,7 +26,10 @@ RSpec.describe Flight, type: :model do
   end
 
   it "generates city based on the destination" do
-    flight = create(:flight)
+    flight = build(:flight)
+    flight.stub(:get_temperature).and_return(13)
+    flight.save
+
     expect(Flight.count).to eq(1)
     flight = Flight.first
     expect(flight.destination).to eq('LONDON LHR')
@@ -36,6 +39,7 @@ RSpec.describe Flight, type: :model do
   context "NoteGenerator" do
     it "saves generated note" do
       flight      = build(:flight)
+      flight.stub(:get_temperature).and_return(10)
       flight.note = ""
       flight.save
       expect(Flight.count).to eq(1)
