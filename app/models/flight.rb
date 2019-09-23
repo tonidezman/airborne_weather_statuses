@@ -7,7 +7,7 @@
 #  city        :string
 #  destination :string           not null
 #  note        :string
-#  temperature :integer
+#  temperature :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

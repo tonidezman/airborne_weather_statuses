@@ -6,7 +6,7 @@ class FlightsScraper
 
     capybara_configuration
     url      = "https://www.viennaairport.com/passagiere/ankunft__abflug/abfluege"
-    browser = Capybara.current_session
+    browser  = Capybara.current_session
     browser.visit(url)
     browser.find('#vie_allow_cookies').click
     doc = Nokogiri::HTML.parse(browser.html)
@@ -33,6 +33,8 @@ class FlightsScraper
         EOL
         Rails.logger.error(msg)
       end
+
+      Capybara.current_session.driver.quit
     end
 
   end
