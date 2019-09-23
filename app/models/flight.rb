@@ -17,14 +17,16 @@
 #
 
 class Flight < ApplicationRecord
-  before_save :generate_city
-  before_save :get_temperature
+  before_save :generate_city, :get_temperature, :generate_note
 
-  def note=(note_str="")
-    if note_str.blank?
-      note_str = NoteGenerator.generate_note(city: city, temperature: temperature)
-    end
-    write_attribute(:note, note_str)
+  def generate_note
+    msg = if temperature == 'Temperature not found.'
+            "I need Temperature data."
+          else
+            NoteGenerator.generate_note(city: city, temperature: temperature.to_i)
+          end
+
+    self.note = msg
   end
 
   def get_temperature
@@ -37,6 +39,4 @@ class Flight < ApplicationRecord
     self.city = destination&.split&.first&.capitalize
     throw(:abort) if city.nil?
   end
-
-
 end

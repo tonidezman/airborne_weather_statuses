@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe WeatherService do
-
   context "city temperatures", :vcr do
     it "returns ljubljana's temp" do
       temp_ljubljana = WeatherService.temperature(city: "Ljubljana").to_i
@@ -19,5 +18,4 @@ RSpec.describe WeatherService do
     end
 
   end
-
 end
