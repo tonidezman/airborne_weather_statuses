@@ -16,17 +16,28 @@ class FlightsScraper
       header_or_date = (index == 0 || index == 1)
       next if header_or_date
 
-      time          = flight_row.css('.fdabf-td1').text
-      status        = flight_row.css('.fdabf-td7').text
-      destination   = flight_row.css('.fdabf-td2 .hidden-xs').text
+      time        = flight_row.css('.fdabf-td1').text
+      flight_code = flight_row.css('.fdabf-td3').text
+      terminal    = flight_row.css('.fdabf-td4').text
+      gate        = flight_row.css('.fdabf-td5').text
+      airline     = flight_row.css('.fdabf-td6').text
+      status      = flight_row.css('.fdabf-td7').text
+      destination = flight_row.css('.fdabf-td2 .hidden-xs').text
 
       # next if status != 'airborne'
-      unless Flight.create(
-        airborne_at: DateTime.parse("#{current_date} #{time}"),
-        destination: destination
+      flight = Flight.find_or_initialize_by(
+        gate: gate,
+        status: status,
+        airline: airline,
+        terminal: terminal,
+        flight_code: flight_code,
+        destination: destination,
+        airborne_at: DateTime.parse("#{current_date} #{time}")
       )
+
+      unless flight.save
         msg = <<~EOL
-          ERROR while saving this flight data
+          ERROR while saving flight
           airborne_at: #{current_date} #{time}
           destination: #{destination}
           status:      #{status}

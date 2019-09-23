@@ -3,13 +3,22 @@
 # Table name: flights
 #
 #  id          :bigint           not null, primary key
-#  airborne_at :datetime         not null
+#  airborne_at :datetime
+#  airline     :string
 #  city        :string
-#  destination :string           not null
+#  destination :string
+#  flight_code :string
+#  gate        :string
 #  note        :string
+#  status      :string
 #  temperature :string
+#  terminal    :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#
+# Indexes
+#
+#  composite_flight_key  (flight_code,terminal,gate,airline,destination,airborne_at) UNIQUE
 #
 
 require 'rails_helper'

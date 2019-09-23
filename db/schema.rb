@@ -18,11 +18,17 @@ ActiveRecord::Schema.define(version: 2019_09_21_160418) do
   create_table "flights", force: :cascade do |t|
     t.string "note"
     t.string "city"
+    t.string "flight_code"
+    t.string "terminal"
+    t.string "gate"
+    t.string "airline"
+    t.string "destination"
     t.string "temperature"
-    t.string "destination", null: false
-    t.datetime "airborne_at", null: false
+    t.string "status"
+    t.datetime "airborne_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["flight_code", "terminal", "gate", "airline", "destination", "airborne_at"], name: "composite_flight_key", unique: true
   end
 
 end
