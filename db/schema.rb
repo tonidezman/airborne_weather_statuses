@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_09_21_160418) do
   create_table "flights", force: :cascade do |t|
     t.string "note"
     t.string "city"
-    t.integer "temperature"
+    t.string "temperature"
     t.string "destination", null: false
     t.datetime "airborne_at", null: false
     t.datetime "created_at", precision: 6, null: false

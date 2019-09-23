@@ -3,7 +3,7 @@ class CreateFlights < ActiveRecord::Migration[6.0]
     create_table :flights do |t|
       t.string   :note
       t.string   :city
-      t.integer  :temperature
+      t.string   :temperature
       t.string   :destination, null: false
       t.datetime :airborne_at, null: false
       t.index([:destination, :airborne_at], unique: true)
