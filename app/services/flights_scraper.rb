@@ -1,6 +1,5 @@
 
 class FlightsScraper
-
   def self.airborne_flights
     # what happens if we run this scraper at midnight?
 
