@@ -11,10 +11,6 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-# Indexes
-#
-#  index_flights_on_destination_and_airborne_at  (destination,airborne_at) UNIQUE
-#
 
 class Flight < ApplicationRecord
   before_save :generate_city, :get_temperature, :generate_note

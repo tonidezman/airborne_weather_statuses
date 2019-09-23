@@ -6,7 +6,6 @@ class CreateFlights < ActiveRecord::Migration[6.0]
       t.string   :temperature
       t.string   :destination, null: false
       t.datetime :airborne_at, null: false
-      t.index([:destination, :airborne_at], unique: true)
       t.timestamps
     end
   end

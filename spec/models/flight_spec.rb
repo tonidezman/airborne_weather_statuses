@@ -11,10 +11,6 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-# Indexes
-#
-#  index_flights_on_destination_and_airborne_at  (destination,airborne_at) UNIQUE
-#
 
 require 'rails_helper'
 
@@ -26,7 +22,7 @@ RSpec.describe Flight, type: :model do
 
   it "generates city based on the destination" do
     flight = build(:flight)
-    flight.stub(:get_temperature).and_return(13)
+    allow(flight).to receive(:get_temperature).and_return(13)
     flight.save
 
     expect(Flight.count).to eq(1)
@@ -38,7 +34,7 @@ RSpec.describe Flight, type: :model do
   context "NoteGenerator" do
     it "saves generated note" do
       flight      = build(:flight)
-      flight.stub(:get_temperature).and_return(10)
+      allow(flight).to receive(:get_temperature).and_return(10)
       flight.note = ""
       flight.save
       expect(Flight.count).to eq(1)
