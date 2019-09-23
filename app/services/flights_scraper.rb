@@ -27,13 +27,13 @@ class FlightsScraper
       # next if status != 'airborne'
       flight = Flight.find_or_initialize_by(
         gate: gate,
-        status: status,
         airline: airline,
         terminal: terminal,
         flight_code: flight_code,
         destination: destination,
         airborne_at: DateTime.parse("#{current_date} #{time}")
       )
+      flight.status = status
 
       unless flight.save
         msg = <<~EOL
