@@ -13,14 +13,14 @@ class FlightsScraper
 
     current_date = Date.today.to_s
     doc.css('.detail-table__row').each.with_index do |flight_row, index|
-      header_or_date = (index == 1 || index == 2)
+      header_or_date = (index == 0 || index == 1)
       next if header_or_date
 
       time          = flight_row.css('.fdabf-td1').text
-      destination   = flight_row.css('.fdabf-td2').text
       status        = flight_row.css('.fdabf-td7').text
+      destination   = flight_row.css('.fdabf-td2 .hidden-xs').text
 
-      next if status != 'airborne'
+      # next if status != 'airborne'
       unless Flight.create(
         airborne_at: DateTime.parse("#{current_date} #{time}"),
         destination: destination

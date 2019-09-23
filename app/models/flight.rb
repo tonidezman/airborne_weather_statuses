@@ -34,7 +34,8 @@ class Flight < ApplicationRecord
   private
 
   def generate_city
-    self.city = destination.split.first.capitalize
+    self.city = destination&.split&.first&.capitalize
+    throw(:abort) if city.nil?
   end
 
 
