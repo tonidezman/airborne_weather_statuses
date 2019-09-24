@@ -8,7 +8,7 @@ class NoteGenerator
 
   def self.get_language(city)
     case city
-    when 'Berlin', 'Frankfurt', 'Hamburg', 'Köln', 'München'
+    when 'Berlin', 'Frankfurt', 'Hamburg', 'Köln', 'München', 'Düsseldorf', 'Venedig'
       'German'
     else
       'English'
@@ -17,7 +17,7 @@ class NoteGenerator
 
   def self.get_temp_flag(temperature)
     return :hot  if temperature >= 30
-    return :warm if temperature >= 18
+    return :warm if temperature >= 15
     return :cold
   end
 
