@@ -23,7 +23,6 @@
 
 class Flight < ApplicationRecord
   scope :flights_with_temperature, -> { where.not(temperature: "Temperature not found.") }
-
   before_save :generate_city, :get_temperature, :generate_note
 
 
